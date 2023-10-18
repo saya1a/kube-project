@@ -1,20 +1,14 @@
 pipeline {
-    agent {label 'kworker1' }
-
+    agent {label 'kworker1'}
     stages {
-        stage('checkout scm') {
+        stage('build') {
             steps {
-                script {
-                    git branch: 'main', credentialsId: 'kube-proj', url: 'https://github.com/saya1a/kube-project.git'
-                }
-                stage('Build image') {
-                    steps {
-                        echo 'Starting to build docker image'
-                        script {
-                            def customImage = docker.build("myBusyBox:${env.BUILD_ID}")
-                        }
-                    }
-                }
+                echo 'Build stage'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'date'
             }
         }
     }
