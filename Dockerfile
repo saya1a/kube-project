@@ -1,3 +1,2 @@
 FROM busybox:latest
-COPY ./file1.txt /home/
-~       
+COPY ./file1.txt /home/   
