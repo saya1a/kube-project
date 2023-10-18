@@ -1,2 +1,2 @@
 FROM busybox:latest
-COPY /home/kworker-1 /home/   
+COPY /home/kworker-1/file1.txt /home/   
