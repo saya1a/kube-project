@@ -2,7 +2,7 @@ pipeline {
     agent {label 'kworker1' }
     environment {
         // Define the image name and tag
-        DOCKER_IMAGE = 'myBusyBox'
+        DOCKER_IMAGE = 'mybusybox'
         DOCKER_TAG = '1.1.2'
     }
 
