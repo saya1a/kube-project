@@ -1,5 +1,10 @@
 pipeline {
     agent {label 'kworker1' }
+    environment {
+        // Define the image name and tag
+        DOCKER_IMAGE = 'myBusyBox'
+        DOCKER_TAG = '1.1.2'
+    }
 
     stages {
         stage('checkout scm') {
@@ -9,11 +14,10 @@ pipeline {
                 }
             }
         }
-        stage('Build image') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Starting to build docker image'
                 script {
-                    def customImage = docker.build("myBusyBox:${env.BUILD_ID}")
+                    def dockerImage = docker.build("${DOCKER_IMAGE}"${DOCKER_TAG}, "--file Dockerfile .")
                     }
             }
         }
