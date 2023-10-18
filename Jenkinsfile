@@ -1,5 +1,5 @@
 pipeline {
-    agent {label: kworker1 }
+    agent {label 'kworker1' }
 
     stages {
         stage('checkout scm') {
