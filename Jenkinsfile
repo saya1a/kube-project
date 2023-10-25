@@ -39,7 +39,7 @@ pipeline {
                     // Log in to Amazon ECR
                     def awsRegion = "${AWS_DEFAULT_REGION}"
                     def ecrRegistry = "${AWS_ACCOUNT_ID}.dkr.ecr.${awsRegion}.amazonaws.com"
-                    docker.withRegistry("https://${ecrRegistry}", 'ecr:${AWS_DEFAULT_REGION}') {
+                    docker.withRegistry("https://${ecrRegistry}", 'ecr:${awsRegion}') {
                         // Push the Docker image to ECR
                         dockerImage.push()
                     }
