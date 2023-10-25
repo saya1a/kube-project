@@ -42,8 +42,7 @@ pipeline {
                     //docker.withRegistry("https://${ecrRegistry}", 'ecr:us-east-1') {
                         // Push the Docker image to ECR
                         //dockerImage.push()
-                        docker push 121247432410.dkr.ecr.us-east-1.amazonaws.com/mykube-repo:latest
-                    }
+                    docker push 121247432410.dkr.ecr.us-east-1.amazonaws.com/mykube-repo:latest
                 }
             }
         }
