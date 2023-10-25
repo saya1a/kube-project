@@ -37,11 +37,12 @@ pipeline {
             steps {
                 script {
                     // Log in to Amazon ECR
-                    def awsRegion = "${AWS_DEFAULT_REGION}"
-                    def ecrRegistry = "${AWS_ACCOUNT_ID}.dkr.ecr.${awsRegion}.amazonaws.com"
-                    docker.withRegistry("https://${ecrRegistry}", 'ecr:us-east-1') {
+                    //def awsRegion = "${AWS_DEFAULT_REGION}"
+                    //def ecrRegistry = "${AWS_ACCOUNT_ID}.dkr.ecr.${awsRegion}.amazonaws.com"
+                    //docker.withRegistry("https://${ecrRegistry}", 'ecr:us-east-1') {
                         // Push the Docker image to ECR
-                        dockerImage.push()
+                        //dockerImage.push()
+                        docker push 121247432410.dkr.ecr.us-east-1.amazonaws.com/mykube-repo:latest
                     }
                 }
             }
