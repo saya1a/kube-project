@@ -30,10 +30,20 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}", "--file Dockerfile .")
-                    sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPOSITORY"
-                    sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} $ECR_REPOSITORY/${DOCKER_IMAGE}:${IMAGE_TAG}"
-                    sh "docker push $ECR_REPOSITORY/${DOCKER_IMAGE}:${IMAGE_TAG}"
                     }
+            }
+        }
+        stage('Push to ECR') {
+            steps {
+                script {
+                    // Log in to Amazon ECR
+                    def awsRegion = "${AWS_DEFAULT_REGION}"
+                    def ecrRegistry = "${AWS_ACCOUNT_ID}.dkr.ecr.${awsRegion}.amazonaws.com"
+                    docker.withRegistry("https://${ecrRegistry}", 'ecr:${AWS_DEFAULT_REGION}') {
+                        // Push the Docker image to ECR
+                        dockerImage.push()
+                    }
+                }
             }
         }
     }
