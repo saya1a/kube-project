@@ -30,6 +30,9 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}", "--file Dockerfile .")
+                    sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPOSITORY"
+                    sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} $ECR_REPOSITORY/${DOCKER_IMAGE}:${IMAGE_TAG}"
+                    sh "docker push $ECR_REPOSITORY/${DOCKER_IMAGE}:${IMAGE_TAG}"
                     }
             }
         }
