@@ -5,7 +5,7 @@ pipeline {
         DOCKER_IMAGE = 'mybusybox'
         DOCKER_TAG = '1.1.2'
         // ecr info...
-        AWS_DEFAULT_REGION = 'your-aws-regionus-east-1'
+        AWS_DEFAULT_REGION = 'us-east-1'
         AWS_ACCOUNT_ID = '121247432410'
         ECR_REPOSITORY = 'mykube-repo'
         IMAGE_TAG = '1.1.3'
