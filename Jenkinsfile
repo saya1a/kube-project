@@ -38,7 +38,7 @@ pipeline {
                 script {
                     // Log in to Amazon ECR
                     //def awsRegion = "${AWS_DEFAULT_REGION}"
-                    sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin {AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com"
+                    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 121247432410.dkr.ecr.us-east-1.amazonaws.com"
                     //def ecrRegistry = "${AWS_ACCOUNT_ID}.dkr.ecr.${awsRegion}.amazonaws.com"
                     //docker.withRegistry("https://${ecrRegistry}", 'ecr:us-east-1') {
                         // Push the Docker image to ECR
